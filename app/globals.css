@@ -9,6 +9,7 @@ body {
   background: #060a12;
   color: #f2f5f7;
   font-family: Poppins, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
 }
 
 button,
@@ -147,6 +148,7 @@ footer {
   flex: 1;
   min-width: 0;
   background: #080d15;
+  overflow-x: hidden;
 }
 
 .brainBar {
@@ -174,6 +176,13 @@ footer {
   display: flex;
   gap: 8px;
   margin-left: auto;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.brainChips::-webkit-scrollbar {
+  display: none;
 }
 
 .brainChips span {
@@ -231,7 +240,13 @@ h1 {
   font-weight: 900;
 }
 
+.status.published {
+  background: #082417;
+  border-color: #5ed09e;
+}
+
 .tabs {
+  max-width: 100%;
   min-height: 76px;
   display: flex;
   justify-content: center;
@@ -476,6 +491,37 @@ select {
   cursor: not-allowed;
 }
 
+.factoryActions {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 12px;
+  align-items: end;
+}
+
+.secondaryAction,
+.exportRow button,
+.promptPanel > button,
+.readerHeader button,
+.readerNav button {
+  min-height: 44px;
+  border: 1px solid #24384f;
+  border-radius: 9px;
+  background: #101d2d;
+  color: #8ca0b8;
+  padding: 10px 14px;
+  font-weight: 850;
+}
+
+.secondaryAction {
+  margin-top: 28px;
+}
+
+.secondaryAction:disabled,
+.readerNav button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 .ctxBanner {
   border: 1px solid #123920;
   border-radius: 9px;
@@ -522,7 +568,13 @@ select {
 .kiwifyPanel,
 .success,
 .error,
-.warning {
+.warning,
+.ebookReader,
+.briefGrid article,
+.offerPanel,
+.landingPreview,
+.facebookPlan,
+.historyList button {
   border: 1px solid #172334;
   border-radius: 12px;
   background: #0d1623;
@@ -557,6 +609,415 @@ pre {
   white-space: pre-wrap;
   line-height: 1.7;
   font-size: 14px;
+}
+
+.ebookReader {
+  display: grid;
+  grid-template-columns: 0.8fr 1.4fr 0.8fr;
+  gap: 16px;
+  background: #09131f;
+}
+
+.ebookCover {
+  min-height: 320px;
+  border: 1px solid #1c6a49;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 24% 18%, rgba(94, 208, 158, 0.28), transparent 30%),
+    linear-gradient(145deg, #061d14, #101d2e);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.ebookCover span,
+.offerPanel span,
+.briefGrid span {
+  color: #5ed09e;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ebookCover h3 {
+  margin: 12px 0 8px;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+}
+
+.ebookCover p,
+.ebookCover small {
+  color: #afbed0;
+  line-height: 1.5;
+}
+
+.ebookPage {
+  border: 1px solid #24384f;
+  border-radius: 12px;
+  background: #f3f6f5;
+  color: #101722;
+  padding: 24px;
+}
+
+.readerHeader,
+.readerNav,
+.exportRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.readerHeader {
+  margin-bottom: 18px;
+}
+
+.readerHeader strong {
+  color: #496073;
+}
+
+.readerHeader div {
+  display: flex;
+  gap: 8px;
+}
+
+.ebookPage h3 {
+  margin-bottom: 12px;
+  font-size: 26px;
+  letter-spacing: -0.03em;
+}
+
+.ebookPage p {
+  color: #1d2a36;
+  line-height: 1.75;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: pre-wrap;
+}
+
+.takeaway {
+  border-left: 4px solid #1b8f69;
+  background: #e1f4ed;
+  color: #0d5c40;
+  padding: 12px 14px;
+  margin: 18px 0;
+  font-weight: 850;
+}
+
+.ebookIndex {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.ebookIndex strong {
+  color: #5ed09e;
+}
+
+.ebookIndex button {
+  border: 1px solid #172334;
+  border-radius: 9px;
+  background: #0a1220;
+  color: #8ca0b8;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 750;
+}
+
+.ebookIndex button.selected {
+  border-color: #5ed09e;
+  background: #062016;
+  color: #5ed09e;
+}
+
+.briefGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.briefGrid article {
+  margin-top: 0;
+}
+
+.briefGrid strong {
+  display: block;
+  margin-top: 8px;
+  color: #dce6ef;
+  line-height: 1.5;
+}
+
+.briefGrid ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: #9aaec4;
+}
+
+.paletteCard div {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.paletteCard i {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+
+.offerPanel {
+  border-color: #1c6a49;
+  background: #071c14;
+}
+
+.offerPanel h3 {
+  margin: 8px 0;
+  color: #f4f7fb;
+  font-size: 26px;
+}
+
+.offerMeta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.offerMeta strong {
+  color: #5ed09e;
+  font-size: 28px;
+}
+
+.offerMeta em {
+  color: #8ca0b8;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.listBlock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.listBlock strong {
+  width: 100%;
+  color: #5ed09e;
+}
+
+.listBlock span,
+.benefitGrid span {
+  border: 1px solid #20354b;
+  border-radius: 999px;
+  background: #0c1826;
+  color: #b7c6d8;
+  padding: 8px 12px;
+  font-weight: 750;
+}
+
+.landingPreview {
+  padding: 0;
+  overflow: hidden;
+}
+
+.landingPreview section {
+  padding: 26px;
+  border-top: 1px solid #172334;
+}
+
+.landingPreview section:first-child {
+  border-top: 0;
+}
+
+.landingHero {
+  background:
+    radial-gradient(circle at 80% 10%, rgba(94, 208, 158, 0.22), transparent 35%),
+    linear-gradient(135deg, #08111c, #071d14);
+}
+
+.landingHero h3 {
+  max-width: 760px;
+  margin-bottom: 12px;
+  font-size: 34px;
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+
+.landingPreview h4 {
+  color: #5ed09e;
+  margin-bottom: 8px;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.landingPreview p {
+  color: #b7c6d8;
+  line-height: 1.65;
+}
+
+.landingHero a {
+  display: inline-flex;
+  margin-top: 12px;
+  border-radius: 9px;
+  background: #5ac896;
+  color: white;
+  padding: 12px 18px;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.benefitGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+details {
+  border: 1px solid #172334;
+  border-radius: 9px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+summary {
+  color: #f4f7fb;
+  font-weight: 850;
+}
+
+.exportRow {
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.promptPanel {
+  margin-top: 18px;
+}
+
+.promptPanel pre {
+  border: 1px solid #172334;
+  border-radius: 10px;
+  background: #080f19;
+  margin-top: 10px;
+  max-height: 320px;
+  overflow: auto;
+  padding: 14px;
+}
+
+.facebookPlan {
+  display: grid;
+  gap: 16px;
+}
+
+.queryRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.queryRow a {
+  border: 1px solid #1c6a49;
+  border-radius: 999px;
+  color: #5ed09e;
+  background: #062016;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: 850;
+}
+
+.groupGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.groupGrid article {
+  border: 1px solid #172334;
+  border-radius: 10px;
+  background: #09131f;
+  padding: 14px;
+}
+
+.groupGrid strong {
+  color: #f4f7fb;
+}
+
+.groupGrid p,
+.groupGrid span,
+.groupGrid em {
+  display: block;
+  color: #8ca0b8;
+  line-height: 1.5;
+}
+
+.groupGrid em {
+  color: #e6bc62;
+  font-style: normal;
+}
+
+.scriptColumns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.scriptColumns > div {
+  border: 1px solid #172334;
+  border-radius: 10px;
+  background: #09131f;
+  padding: 14px;
+}
+
+.scriptColumns h3 {
+  color: #5ed09e;
+  margin-bottom: 10px;
+}
+
+.scriptColumns p {
+  border-top: 1px solid #172334;
+  color: #b7c6d8;
+  padding-top: 10px;
+}
+
+.historyList {
+  display: grid;
+  gap: 12px;
+}
+
+.historyList button {
+  width: 100%;
+  margin-top: 0;
+  text-align: left;
+}
+
+.historyList button.active {
+  border-color: #5ed09e;
+  background: #062016;
+}
+
+.historyList strong,
+.historyList span,
+.historyList small {
+  display: block;
+}
+
+.historyList strong {
+  color: #f4f7fb;
+  font-size: 18px;
+}
+
+.historyList span {
+  color: #8ca0b8;
+  margin-top: 4px;
+}
+
+.historyList small {
+  color: #5ed09e;
+  margin-top: 8px;
 }
 
 .kiwifyPanel {
@@ -696,8 +1157,20 @@ pre {
 
   .nicheGrid,
   .formatGrid,
-  .twoCols {
+  .twoCols,
+  .factoryActions,
+  .ebookReader,
+  .briefGrid,
+  .groupGrid,
+  .scriptColumns {
     grid-template-columns: 1fr;
   }
-}
 
+  .ebookCover {
+    min-height: 220px;
+  }
+
+  .landingHero h3 {
+    font-size: 27px;
+  }
+}

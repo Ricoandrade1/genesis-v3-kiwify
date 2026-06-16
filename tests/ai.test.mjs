@@ -39,7 +39,8 @@ test("monta payload Gemini sem expor chave", () => {
   });
 
   assert.equal(payload.generationConfig.responseMimeType, "application/json");
-  assert.match(payload.contents[0].parts[0].text, /produto digital/);
+  assert.match(payload.contents[0].parts[0].text, /kiwifyPayload/);
+  assert.match(payload.contents[0].parts[0].text, /Prompts devem ficar separados/);
   assert.doesNotMatch(JSON.stringify(payload), /GEMINI_API_KEY|gemini-test/);
 });
 
@@ -54,7 +55,7 @@ test("mantem payload OpenAI Responses compativel", () => {
 
   assert.equal(payload.model, "modelo-teste");
   assert.equal(payload.text.format.type, "json_schema");
-  assert.match(payload.input, /produto digital/);
+  assert.match(payload.input, /kiwifyPayload/);
   assert.doesNotMatch(JSON.stringify(payload), /OPENAI_API_KEY/);
 });
 
@@ -69,7 +70,8 @@ test("monta payload Claude sem expor chave", () => {
 
   assert.equal(payload.model, "claude-modelo-teste");
   assert.equal(payload.messages[0].role, "user");
-  assert.match(payload.messages[0].content, /pagina de vendas/i);
+  assert.match(payload.messages[0].content, /landing page/i);
+  assert.match(payload.messages[0].content, /htmlDraft/);
   assert.doesNotMatch(JSON.stringify(payload), /ANTHROPIC_API_KEY|claude-test/);
 });
 
